@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Lora', serif;
+        }
+        
+        /* General style for the footer login buttons */
+        .footer-login-button {
+            display: inline-block;
+            color: #ffffff; /* White text color */
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: 8px; /* Rounded corners */
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin: 0 10px; /* Space between buttons */
+        }
+
+        /* Admin button specific styles */
+        .admin-button {
+            background-color: #e74c3c; /* Vibrant red */
+        }
+
+        .admin-button:hover {
+            background-color: #c0392b; /* Darker red on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* Staff button specific styles */
+        .staff-button {
+            background-color: #3498db; /* Vibrant blue */
+        }
+
+        .staff-button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+        }
+
+        /* Menu Section Styles */
+        .menu-section {
+            background-color: #f8f9fa;
+        }
+
+        .menu-image {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .menu-description {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .menu-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 0.5rem;
+        }
+
+        /* Combo Meals Slider Styles */
+        .combo-meals-section {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+        }
+
+        .combo-image {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .combo-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .combo-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .combo-info {
+            padding: 1rem;
+        }
+
+        .combo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .combo-description {
+            font-size: 1rem;
+            color: #6c757d;
+        }
+
+        .combo-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 0.5rem;
+        }
+
+
+        /* Unique Hero Section Styles */
+        #hero-section {
+            position: relative;
+            height: 100vh;
+            background-image: url('images/back-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+        }
+
+        #hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        #hero-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        #hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        #reserve-button {
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #reserve-button:hover {
+            background-color: #218838;
+        }
+
+        /* Feedback Section Styles */
+        .feedback-section {
+            background-color: #f8f9fa;
+        }
+
+        .feedback-form {
+            background-color: #ffffff;
+            border: 1px solid #e3e6e8;
+        }
+
+        .feedback-form h2 {
+            color: #333;
+        }
+
+        .feedback-form label {
+            color: #555;
+        }
+
+        .feedback-form .form-control {
+            border-radius: 0.25rem;
+            border: 1px solid #ced4da;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+        }
+
+        .feedback-form .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .feedback-form .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">ABC Restaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#gallery">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#offers">Offers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#location">Location</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#feedback">Feedback</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero-section">
+        <div id="hero-overlay"></div>
+        <div id="hero-content">
+            <h1 id="hero-title">Welcome to Our Restaurant</h1>
+            <p id="hero-subtitle">Delicious food, warm ambiance, and exceptional service.</p>
+            <a href="customer-login.jsp" id="reserve-button">Reserve Table</a>
+        </div>
+    </section>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- About Section -->
+    <section id="about" class="container py-5">
+        <h2 class="text-center" style="color: #921A40;">About Us</h2>
+        <p class="text-center">Welcome to ABC Restaurant, where culinary passion meets a warm, inviting atmosphere. Nestled in the heart of Nugegoda, we take pride in offering an exceptional dining experience that blends traditional flavors with contemporary culinary techniques. Our menu features a diverse selection of dishes, meticulously crafted using the freshest ingredients to delight your taste buds. Whether you're here for a casual meal, a special celebration, or a cozy evening out, our dedicated team is committed to ensuring that every visit to ABC Restaurant is memorable. Join us and savor the essence of fine dining in a setting that feels like home.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container py-5">
+        <h2 class="text-center" style="color: #921A40;">Gallery</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="images/image1.jpg" class="img-fluid" alt="Gallery Image 1">
+            </div>
+            <div class="col-md-4">
+                <img src="images/image2.jpg" class="img-fluid" alt="Gallery Image 2">
+            </div>
+            <div class="col-md-4">
+                <img src="images/image3.jpg" class="img-fluid" alt="Gallery Image 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="container py-5 bg-light">
+        <h2 class="text-center" style="color: #921A40;">Our Services</h2>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="service-icon mb-3" style="background-color: #C75B7A;">
+                    <i class="fas fa-utensils fa-2x" style="color: white;"></i>
+                </div>
+                <h4>Fine Dining</h4>
+                <p>Experience the art of fine dining at ABC Restaurant, 
+                    where each dish is crafted with the finest ingredients 
+                    and presented with elegance. Our sophisticated ambiance 
+                    and attentive service make every meal special, 
+                    whether you're celebrating or simply enjoying a gourmet treat. 
+                    Indulge in a refined dining experience that lingers in your memory.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="service-icon mb-3" style="background-color: #C75B7A;">
+                    <i class="fas fa-wine-glass-alt fa-2x" style="color: white;"></i>
+                </div>
+                <h4>Private Events</h4>
+                <p>Host your special occasions at ABC Restaurant, 
+                    where our elegant setting and personalized service 
+                    create unforgettable memories. Whether it's a birthday, 
+                    anniversary, or corporate gathering, we offer tailored menus 
+                    and a refined atmosphere to suit your needs. Let us make your private event truly exceptional.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="service-icon mb-3" style="background-color: #C75B7A;">
+                    <i class="fas fa-concierge-bell fa-2x" style="color: white;"></i>
+                </div>
+                <h4>Catering</h4>
+                <p>Bring the flavors of ABC Restaurant to your next event with 
+                    our exceptional catering services. We offer customized menus and 
+                    professional service to ensure your guests enjoy a memorable dining 
+                    experience. Whether it's a small gathering or a large celebration, 
+                    our catering will exceed your expectations</p>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Menu Section -->
+<section id="menu" class="menu-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Menu</h2>
+        <div class="row">
+            <!-- Menu Item 1 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/burger.jpg" alt="Food Item 1" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Chicken Burger</h3>
+                <p class="menu-description">Delicious burger with fresh homemade chicken patty</p>
+                <p class="menu-price">$10.00</p>
+            </div>
+            <!-- Menu Item 2 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/friedrice.jpg" alt="Food Item 2" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Fried Rice</h3>
+                <p class="menu-description">Delicious fried rice made with fresh vegees</p>
+                <p class="menu-price">$12.00</p>
+            </div>
+            <!-- Menu Item 3 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/kottu.jpg" alt="Food Item 3" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Spicy Chicken Kottu</h3>
+                <p class="menu-description">Delicious kottu with sri lankan spices</p>
+                <p class="menu-price">$15.00</p>
+            </div>
+            <!-- Menu Item 4 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/nasi.jpg" alt="Food Item 4" class="img-fluid">
+                </div>
+                <h3 class="menu-title">NasiGeorang</h3>
+                <p class="menu-description">Thailand style nasi with egg bullseye</p>
+                <p class="menu-price">$9.00</p>
+            </div>
+            <!-- Menu Item 5 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/noodles.jpg" alt="Food Item 5" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Chicken Noodles</h3>
+                <p class="menu-description">Sri Lankan style chicken noodles</p>
+                <p class="menu-price">$11.00</p>
+            </div>
+            <!-- Menu Item 6 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/pasta.jpg" alt="Food Item 6" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Pasta</h3>
+                <p class="menu-description">Ithalian style fresh pasta with white cream</p>
+                <p class="menu-price">$14.00</p>
+            </div>
+            <!-- Menu Item 7 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/pizza.jpg" alt="Food Item 7" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Pizza</h3>
+                <p class="menu-description">Delicious pizza for meat lovers</p>
+                <p class="menu-price">$13.00</p>
+            </div>
+            <!-- Menu Item 8 -->
+            <div class="col-md-4 menu-item">
+                <div class="menu-image">
+                    <img src="images/tacos.jpg" alt="Food Item 8" class="img-fluid">
+                </div>
+                <h3 class="menu-title">Tacos</h3>
+                <p class="menu-description">Chicken tacos with homemade sauces</p>
+                <p class="menu-price">$16.00</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+
+    <!-- Offers Section -->
+    <section id="offers" class="container py-5">
+        <h2 class="text-center" style="color: #921A40;">Our Offers</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header" style="background-color: #D9ABAB; color: #921A40;">
+                        <h4 class="my-0 font-weight-normal">Offer 1</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$10 <small class="text-muted">/ discount</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>10% off on all orders</li>
+                            <li>Valid for a limited time</li>
+                            <li>Use code: SAVE10</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block" style="background-color: #C75B7A; color: white;">Grab Offer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header" style="background-color: #D9ABAB; color: #921A40;">
+                        <h4 class="my-0 font-weight-normal">Offer 2</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ discount</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>15% off on all reservations</li>
+                            <li>Valid for a limited time</li>
+                            <li>Use code: RESERVE15</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block" style="background-color: #C75B7A; color: white;">Grab Offer</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-header" style="background-color: #D9ABAB; color: #921A40;">
+                        <h4 class="my-0 font-weight-normal">Offer 3</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">$20 <small class="text-muted">/ discount</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>20% off on catering services</li>
+                            <li>Valid for a limited time</li>
+                            <li>Use code: CATER20</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block" style="background-color: #C75B7A; color: white;">Grab Offer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Combo Meals Slider Section -->
+    <section id="combo-meals-slider" class="combo-meals-section">
+        <div class="container">
+            <h2 class="text-center mb-4">Combo Meals</h2>
+            <div id="comboMealsCarousel" class="carousel slide" data-ride="carousel" data-interval="5000">
+                <div class="carousel-inner">
+                    <!-- Combo Meal 1 -->
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <div class="combo-meal">
+                                <div class="combo-image">
+                                    <img src="images/combo1.jpg" alt="Combo Meal 1" class="img-fluid">
+                                </div>
+                                <div class="combo-info text-center">
+                                    <h3 class="combo-title">Burger Combo</h3>
+                                    <p class="combo-description">Delicious burger combo meal</p>
+                                    <p class="combo-price">$20.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Combo Meal 2 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="combo-meal">
+                                <div class="combo-image">
+                                    <img src="images/combo2.jpg" alt="Combo Meal 2" class="img-fluid">
+                                </div>
+                                <div class="combo-info text-center">
+                                    <h3 class="combo-title">Fried Rice Combo</h3>
+                                    <p class="combo-description">Delicious chicken fried rice Combo meal</p>
+                                    <p class="combo-price">$25.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Combo Meal 3 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="combo-meal">
+                                <div class="combo-image">
+                                    <img src="images/combo3.jpg" alt="Combo Meal 3" class="img-fluid">
+                                </div>
+                                <div class="combo-info text-center">
+                                    <h3 class="combo-title">Noodles Combo</h3>
+                                    <p class="combo-description">Delicious chicken noodles combo meal</p>
+                                    <p class="combo-price">$30.00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#comboMealsCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#comboMealsCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    
+    <!-- Feedback Section -->
+<section id="restaurant-feedback" class="container py-5">
+    <h2 class="text-center feedback-title">Restaurant Feedback</h2>
+    <div class="row mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="feedback-card text-center">
+                <div class="feedback-card-body">
+                    <img src="images/profile1.jpg" class="feedback-profile-img rounded-circle mb-3" alt="Customer Image">
+                    <blockquote class="feedback-quote">
+                        <p>Growth of data is exponential and our ability to get true insight that matter was challenging with classic, traditional BI tools.</p>
+                    </blockquote>
+                    <footer class="feedback-footer">Sophia Smith <cite title="Source Title">Hair Specialist</cite></footer>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="feedback-card text-center">
+                <div class="feedback-card-body">
+                    <img src="images/profile2.jpg" class="feedback-profile-img rounded-circle mb-3" alt="Customer Image">
+                    <blockquote class="feedback-quote">
+                        <p>Growth of data is exponential and our ability to get true insight that matter was challenging with classic, traditional BI tools.</p>
+                    </blockquote>
+                    <footer class="feedback-footer">Mike Housin <cite title="Source Title">Director of Marketing</cite></footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    
+
+    <!-- Location Section -->
+    <section id="location" class="container py-5 bg-light">
+        <h2 class="text-center" style="color: #921A40;">Our Location</h2>
+        <div class="text-center">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63304.85362275889!2d79.8677566!3d6.9270781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae259e8dbd29b13%3A0x3a40bd4bb63b2f45!2sICBT%20Campus%20-%20Nugegoda%20Campus!5e0!3m2!1sen!2slk!4v1670414071713!5m2!1sen!2slk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <p class="mt-3">Find us at ICBT Campus, Nugegoda, Sri Lanka</p>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback-section" class="feedback-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="feedback-form p-4 border rounded shadow-sm bg-light">
+                        <h2 class="text-center mb-4">Customer Feedback</h2>
+                        <form id="feedback-form" action="#" method="post">
+                            <div class="form-group">
+                                <label for="feedback-name">Your Name</label>
+                                <input type="text" class="form-control" id="feedback-name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-email">Your Email</label>
+                                <input type="email" class="form-control" id="feedback-email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="feedback-message">Your Message</label>
+                                <textarea class="form-control" id="feedback-message" rows="4" placeholder="Your message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Footer Section -->
+<footer class="footer bg-dark text-light pt-5 pb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Information</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-light">Home</a></li>
+                    <li><a href="#" class="text-light">Menu & Order Online</a></li>
+                    <li><a href="#" class="text-light">About Us</a></li>
+                    <li><a href="#" class="text-light">Happy Customers</a></li>
+                    <li><a href="#" class="text-light">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Get In Touch</h5>
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-clock-o" aria-hidden="true"></i> Mon. - Sun.: 08:00 AM - 11:00 PM</li>
+                    <li><i class="fa fa-map-marker" aria-hidden="true"></i> ICBT Campus, Nugegoda</li>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i> 071 790 1354 | 070 33 99 599</li>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i> info@ourrestaurant.com</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>We Accept</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <img src="images/visa-card.jpg" alt="Visa" class="payment-icon">
+                        <img src="images/master-card.png" alt="MasterCard" class="payment-icon">
+                        <img src="images/american-card.png" alt="American Express" class="payment-icon">
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <a href="admin-login.jsp" class="footer-login-button admin-button">Admin Login</a>
+                <a href="staff-login.jsp" class="footer-login-button staff-button">Staff Login</a>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <p>&copy; 2024 Our Restaurant. All rights reserved | Designed by ICBT Student Sri Lanka</p>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

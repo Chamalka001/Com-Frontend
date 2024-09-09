@@ -1,0 +1,147 @@
+/* Custom styles */
+body {
+    font-family: 'Merriweather', serif;
+
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #C75B7A;
+}
+
+.jumbotron {
+    background-color: #921A40;
+    color: white;
+}
+
+.btn-lg {
+    background-color: #C75B7A;
+    color: white;
+    border: none;
+}
+
+.btn-lg:hover {
+    background-color: #D9ABAB;
+    color: #921A40;
+}
+
+.card-header {
+    background-color: #D9ABAB;
+    color: #921A40;
+}
+
+.card-body .btn-block {
+    background-color: #C75B7A;
+    color: white;
+}
+
+.card-body .btn-block:hover {
+    background-color: #D9ABAB;
+    color: #921A40;
+}
+
+footer {
+    background-color: #921A40;
+    color: white;
+}
+
+footer a {
+    color: #C75B7A;
+}
+
+footer a:hover {
+    color: #D9ABAB;
+}
+
+
+/* Custom styles for Restaurant Feedback Section */
+#restaurant-feedback {
+    background-color: #f4f4f4;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.feedback-title {
+    color: #921A40;
+}
+
+.feedback-card {
+    background-color: #333;
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    padding: 20px;
+}
+
+.feedback-card:hover {
+    transform: translateY(-10px);
+}
+
+.feedback-card-body {
+    color: white;
+}
+
+.feedback-profile-img {
+    border: 3px solid #C75B7A;
+    width: 80px;
+    height: 80px;
+}
+
+.feedback-quote {
+    color: #F4D9D0;
+}
+
+.feedback-footer {
+    color: #D9ABAB;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+.footer h5 {
+    border-bottom: 2px solid #C75B7A;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: #D9ABAB;
+}
+
+.footer ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.footer a {
+    color: #f4f4f4;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #C75B7A;
+    text-decoration: underline;
+}
+
+.footer .payment-icon {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.footer .fa {
+    color: #C75B7A;
+    margin-right: 10px;
+}
+
+.footer .text-center p {
+    margin-top: 20px;
+    color: #D9ABAB;
+}
