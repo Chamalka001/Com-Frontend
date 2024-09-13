@@ -1,6 +1,6 @@
 <%-- 
-    Document   : query-first
-    Created on : 12-Sep-2024, 14:49:02
+    Document   : customer-table
+    Created on : 13-Sep-2024, 20:25:18
     Author     : Dinindu
 --%>
 
@@ -10,7 +10,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
         <style>
@@ -73,10 +72,11 @@
     </head>
     <body>
 
+
         <script>
 
             document.addEventListener('DOMContentLoaded', () => {
-                const apiEndpoint = 'http://localhost:8080/Backend/resources/query/'; // Replace with your API endpoint
+                const apiEndpoint = 'http://localhost:8080/Backend/resources/customer/'; // Replace with your API endpoint
 
                 async function fetchData() {
                     try {
@@ -114,12 +114,25 @@
                         const tdid = document.createElement("td");
                         tdid.textContent = row.id;
 
-                        const tdname = document.createElement("td");
-                        tdname.textContent = row.name;
+                        const tdc_name = document.createElement("td");
+                        tdc_name.textContent = row.c_name;
+
+                        const tdemail = document.createElement("td");
+                        tdemail.textContent = row.email;
+
+                        const tdc_contact = document.createElement("td");
+                        tdc_contact.textContent = row.c_contact;
+
+                        const tdc_password = document.createElement("td");
+                        tdc_password.textContent = row.c_password;
 
 
                         tr.appendChild(tdid);
-                        tr.appendChild(tdname);
+                        tr.appendChild(tdc_name);
+                        tr.appendChild(tdemail);
+                        tr.appendChild(tdc_contact);
+                        tr.appendChild(tdc_password);
+
 
                         tableBody.appendChild(tr);
                     });
@@ -130,14 +143,19 @@
         </script>
 
 
+
+
         <div class="container reservation-container">
-            <h1>Query Data</h1>
+            <h1>Customer Data</h1>
             <div class="table-responsive">
                 <table id="paymentTable" class="table table-hover">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Password</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -145,8 +163,8 @@
                     </tbody>
                 </table>
             </div>
-            <a href="staff-queryDet.jsp" id="reserve-button" class="btn">Get Query Details by ID</a>
+            <a href="customer-details.jsp" id="reserve-button" class="btn">Manage Customers</a>
         </div>
-
     </body>
+</html>
 </html>
