@@ -146,11 +146,13 @@
                         <textarea class="form-control" id="query" name="query" required></textarea>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <button type="submit" class="btn btn-primary" id="btnAddQuery" onclick="addQuery()">Add</button>
+                        
                         <button type="submit" class="btn btn-secondary" id="btnGetQuery" onclick="getQuery()">View Query by ID</button>
                         <button type="button" class="btn btn-warning" id="btnClearQuery" onclick="clearQuery()">Clear</button>
                     </div>
                 </form>
+                
+                <a href="staff-main.jsp" id="reserve-button">Go back</a>
             </div>
         </div>
     </div>

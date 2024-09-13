@@ -133,10 +133,7 @@
             <div class="col-md-8">
                 <h2>Tell us about your experience</h2>
                 <form action="#" method="post">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">ID:</label>
-                        <input type="text" class="form-control" id="id" name="id">
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -147,7 +144,7 @@
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                         <button type="submit" class="btn btn-primary" id="btnAddQuery" onclick="addQuery()">Add</button>
-                        <button type="submit" class="btn btn-secondary" id="btnGetQuery" onclick="getQuery()">View Query by ID</button>
+                        
                         <button type="button" class="btn btn-warning" id="btnClearQuery" onclick="clearQuery()">Clear</button>
                     </div>
                 </form>

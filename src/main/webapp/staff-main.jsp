@@ -73,8 +73,9 @@
             <div id="hero-content">
                 <h1 id="hero-title">Welcome to Our Valuable Staff</h1>
                 <p id="hero-subtitle">We highly appreciate your service.</p>
-                <a href="staff-reservationDet.jsp" id="reserve-button">Reservations</a>
-                <a href="staff-queryDet.jsp" id="reserve-button">Queries</a>
+                <a href="reservation-table.jsp" id="reserve-button">Reservations</a>
+                <a href="staff-payment.jsp" id="reserve-button">Payments</a>
+                <a href="query-first.jsp" id="reserve-button">Queries</a>
             </div>
         </section>
     </body>

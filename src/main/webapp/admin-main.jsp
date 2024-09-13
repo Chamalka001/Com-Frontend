@@ -73,7 +73,7 @@
             <div id="hero-content">
                 <h1 id="hero-title">Welcome to Our Valuable Staff</h1>
                 <p id="hero-subtitle">We highly appreciate your service.</p>
-                <a href="staff-details.jsp" id="reserve-button">Manage Staff</a>
+                <a href="staff-table.jsp" id="reserve-button">Manage Staff</a>
                 <a href="customer-details.jsp" id="reserve-button">Manage Customer</a>
             </div>
         </section>

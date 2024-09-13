@@ -141,10 +141,7 @@
             <div class="col-md-8">
                 <h2>Make a Reservation</h2>
                 <form action="#" method="POST">
-                    <div class="mb-3">
-                        <label for="id" class="form-label">ID:</label>
-                        <input type="text" class="form-control" id="id" name="id">
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="c_name" class="form-label">Name:</label>
                         <input type="text" class="form-control" id="c_name" name="name" required>
@@ -196,7 +193,7 @@
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                         <button type="submit" class="btn btn-primary" id="btnAddReservation" onclick="addReservation()">Add</button>
-                        <button type="submit" class="btn btn-secondary" id="btnGetReservation" onclick="getReservation()">View</button>
+                        
                         <button type="button" class="btn btn-secondary" id="pay" onclick="window.location.href='customer-payment.jsp'">Make Payment</button>
                         <button type="button" class="btn btn-danger" id="btnClearReservation" onclick="clearReservation()">Clear</button>
                     </div>
