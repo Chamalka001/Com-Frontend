@@ -101,7 +101,21 @@
                    body : JSON.stringify(person)
                };
                 
-                 fetch(url, options);
+                 fetch(url, options)
+                        .then(response => {
+                            if (response.ok) {
+                                alert("Customer Added successfully!");
+                                document.getElementById("customForm").reset();
+                                window.history.back();
+
+                            } else {
+                                throw new Error("customer successfull!");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert("An error occurred. Please try again later.");
+                        });
 
             }
             
@@ -143,7 +157,19 @@
                    body : JSON.stringify(person)
                };
                 
-                 fetch(url + id, options);
+                 fetch(url + id, options)
+                .then(response => {
+                    if (response.ok) {
+                        alert("Customer details updated successfully!");
+                        document.getElementById("customForm").reset();
+                    } else {
+                        throw new Error("Failed to update customer details. Please try again later.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred. Please try again later.");
+                });
             }
 
             function deleteCustomer() {
@@ -169,7 +195,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h2>Manage Customer</h2>
-                <form action="#" method="post">
+                <form id="customForm" action="#" method="post">
                     <div class="mb-3">
                         <label for="id" class="form-label">ID:</label>
                         <input type="text" class="form-control" id="id" name="id">
@@ -195,7 +221,7 @@
                         <button type="submit" class="btn btn-secondary" id="btnGetCustomer" onclick="getCustomer()">View</button>
                         <button type="submit" class="btn btn-info" id="btnUpdateCustomer" onclick="updateCustomer()">Update</button>
                         <button type="submit" class="btn btn-danger" id="btnDeleteCustomer" onclick="deleteCustomer()">Delete</button>
-                        <button type="button" class="btn btn-warning" id="btnClearCustomer" onclick="clearCustomer()">Clear</button>
+                        <button type="button" class="btn btn-warning" id="btnClearCustomer" onclick="clearCustomer()">Clear</button>      
                     </div>
                 </form>
             </div>

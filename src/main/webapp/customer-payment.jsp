@@ -88,7 +88,21 @@
                    body : JSON.stringify(person)
                };
                 
-                 fetch(url, options);
+                 fetch(url, options)
+                        .then(response => {
+                            if (response.ok) {
+                                alert("Payment Added successfully!");
+                                document.getElementById("paymentForm").reset();
+                                window.history.back();
+
+                            } else {
+                                throw new Error("payment successfull!");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert("An error occurred. Please try again later.");
+                        });
 
             }
 

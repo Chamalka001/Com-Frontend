@@ -117,7 +117,21 @@
                    body : JSON.stringify(person)
                };
                 
-                 fetch(url, options);
+                 fetch(url, options)
+                        .then(response => {
+                            if (response.ok) {
+                                alert("Staff Added successfully!");
+                                document.getElementById("staffForm").reset();
+                                window.history.back();
+
+                            } else {
+                                throw new Error("staff successfull!");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert("An error occurred. Please try again later.");
+                        });
 
             }
             
@@ -158,8 +172,21 @@
                    },
                    body : JSON.stringify(person)
                };
-                
-                 fetch(url + id, options);
+                 
+                 fetch(url + id, options)
+                .then(response => {
+                    if (response.ok) {
+                        alert("Staff details updated successfully!");
+                        document.getElementById("staffForm").reset();
+                    } else {
+                        throw new Error("Failed to update staff details. Please try again later.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred. Please try again later.");
+                });
+                 
             }
 
             function deleteStaff() {
@@ -168,6 +195,7 @@
                     method : "DELETE"
                 };
                 fetch(url + id, options);
+                
             }
 
             
@@ -185,7 +213,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h2>Manage Staff</h2>
-                <form action="#" method="post">
+                <form id="staffForm" action="#" method="post">
                     <div class="mb-3">
                         <label for="id" class="form-label">ID:</label>
                         <input type="text" class="form-control" id="id" name="id">

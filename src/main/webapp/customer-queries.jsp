@@ -103,7 +103,21 @@
                    body : JSON.stringify(person)
                };
                 
-                 fetch(url, options);
+                 fetch(url, options)
+                        .then(response => {
+                            if (response.ok) {
+                                alert("Query Added successfully!");
+                                document.getElementById("queryForm").reset();
+                                window.history.back();
+
+                            } else {
+                                throw new Error("query successfull!");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert("An error occurred. Please try again later.");
+                        });
 
             }
             
@@ -132,7 +146,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h2>Tell us about your experience</h2>
-                <form action="#" method="post">
+                <form id="queryForm" action="#" method="post">
                     
                     <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>

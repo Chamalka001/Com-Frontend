@@ -75,6 +75,7 @@
                 <p id="hero-subtitle">We highly appreciate your service.</p>
                 <a href="staff-table.jsp" id="reserve-button">Manage Staff</a>
                 <a href="customer-table.jsp" id="reserve-button">Manage Customer</a>
+                <a href="index.html" id="reserve-button">Log Out</a>
             </div>
         </section>
     </body>

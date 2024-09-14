@@ -77,6 +77,7 @@
                 <a href="customer-queries.jsp" id="reserve-button">Add Queries</a>
                 <a href="check-rates.jsp" id="reserve-button">Check Rates</a>
                 <a href="table-availability.jsp" id="reserve-button">Table Availability</a>
+                <a href="index.html" id="reserve-button">Log Out</a>
             </div>
         </section>
     </body>

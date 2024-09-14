@@ -76,6 +76,7 @@
                 <a href="reservation-table.jsp" id="reserve-button">Reservations</a>
                 <a href="staff-payment.jsp" id="reserve-button">Payments</a>
                 <a href="query-first.jsp" id="reserve-button">Queries</a>
+                <a href="index.html" id="reserve-button">Log Out</a>
             </div>
         </section>
     </body>

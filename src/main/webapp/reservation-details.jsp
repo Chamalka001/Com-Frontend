@@ -102,7 +102,21 @@
                    body : JSON.stringify(person)
                };
                 
-                 fetch(url, options);
+                fetch(url, options)
+                        .then(response => {
+                            if (response.ok) {
+                                alert("Reservation Added successfully!");
+                                document.getElementById("resForm").reset();
+                                window.history.back();
+
+                            } else {
+                                throw new Error("reservation successfull!");
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert("An error occurred. Please try again later.");
+                        });
 
             }
             
@@ -140,7 +154,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h2>Make a Reservation</h2>
-                <form action="#" method="POST">
+                <form id="resForm" action="#" method="POST">
                     
                     <div class="mb-3">
                         <label for="c_name" class="form-label">Name:</label>
